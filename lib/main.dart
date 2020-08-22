@@ -8,6 +8,9 @@ import 'dart:io';
 import 'package:http_project/ui/chart.dart';
 import 'package:http_project/ui/table.dart';
 
+import 'ui/chart.dart';
+import 'ui/chart.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
             elevation: 15,
             title: Text("App Bar"),
           ),
-          body: TableApp()),
+          body: AppResponse()),
     );
   }
 }
@@ -69,15 +72,114 @@ class _AppResponseState extends State<AppResponse> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Column(
           children: [
+            Row(
+              
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(16.0),
+                      child: (Platform.isIOS)
+                          ? CupertinoButton(
+                              padding: EdgeInsets.symmetric(horizontal: 0,vertical: 16.0),
+                              color: Colors.blue[500],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(18.0)),
+                              child: Text("Chart Page"),
+                              onPressed: () {
+                                navigateToOtherScreen(context,ChartApp());
+                              },
+                            )
+                          : Container(
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(
+                                    color: Colors.orange,
+                                    offset: Offset(1, 15),
+                                    blurRadius: 32,
+                                    spreadRadius: -5)
+                              ]),
+                              child: RaisedButton(
+                                  splashColor: Colors.orange,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 45, vertical: 15),
+                                  color: Colors.orange,
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Chart Page",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 24),
+                                  )))),
+                ),
+                Expanded(
+                  
+                  child: Container(
+                    padding: EdgeInsets.all(16.0),
+                      child: (Platform.isIOS)
+                          ? CupertinoButton(
+                              padding: EdgeInsets.symmetric(horizontal: 0,vertical: 16.0),
+                              color: Colors.blue[500],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(18.0)),
+                              child: Text("Table Page"),
+                              onPressed: () {},
+                            )
+                          : Container(
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(
+                                    color: Colors.orange,
+                                    offset: Offset(1, 15),
+                                    blurRadius: 32,
+                                    spreadRadius: -5)
+                              ]),
+                              child: RaisedButton(
+                                  splashColor: Colors.orange,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 45, vertical: 15),
+                                  color: Colors.orange,
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Table Page",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 24),
+                                  )))),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
             Container(
                 color: Colors.white70,
                 child: (Platform.isIOS)
-                    ? CupertinoButton(child: Text("Button"), onPressed: () {})
+                    ? CupertinoButton(
+                        color: Colors.blue[500],
+                        borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                        child: Text("Alart Button"),
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (_) => new CupertinoAlertDialog(
+                                    title: new Text("Cupertino Dialog"),
+                                    content: new Text("Hey! I'm Coflutter!"),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text('Close me!'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text('Ok'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  ));
+                        })
                     : Container(
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
@@ -173,4 +275,9 @@ class _AppResponseState extends State<AppResponse> {
       ],
     );
   }
+
+  Future navigateToOtherScreen(context,route) async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => route,));
+  }
+
 }
