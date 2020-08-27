@@ -4,44 +4,49 @@ import 'package:flutter/material.dart';
 class ChartApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: 250,
-            height: 250,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                elevation: 25,
-                child: SimpleLineChart(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Chart Page"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: 250,
+              height: 250,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Card(
+                  elevation: 25,
+                  child: SimpleLineChart(),
+                ),
               ),
             ),
-          ),
-          Container(
-            width: 250,
-            height: 250,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                elevation: 25,
-                child: SimplePieChart(),
+            Container(
+              width: 250,
+              height: 250,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Card(
+                  elevation: 25,
+                  child: SimplePieChart(),
+                ),
               ),
             ),
-          ),
-          Container(
-            width: 250,
-            height: 250,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                elevation: 25,
-                child: SimpleBarChart(),
+            Container(
+              width: 250,
+              height: 250,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Card(
+                  elevation: 25,
+                  child: SimpleBarChart(),
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

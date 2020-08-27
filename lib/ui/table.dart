@@ -44,6 +44,12 @@ class _TableAppState extends State<TableApp> {
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w900)),
               numeric: false,
+              tooltip: "This is Gender"),
+          DataColumn(
+              label: Text("Address",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w900)),
+              numeric: false,
               tooltip: "This is Gender")
         ],
         rows: list
@@ -52,28 +58,32 @@ class _TableAppState extends State<TableApp> {
                   DataCell(Text(user.firsname)),
                   DataCell(Text(user.lastname)),
                   DataCell(Text(user.gender)),
+                  DataCell(Text(user.add)),
                 ]))
             .toList());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(16),
-        child: Card(
-          elevation: 20,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(8.0),
-            child: Expanded(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Table Page"),
+      ),
+      body: Container(
+          padding: EdgeInsets.all(16),
+          child: Card(
+            elevation: 20,
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  getDataTable(),
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal, child: getDataTable()),
                 ],
               ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }
 
@@ -82,26 +92,102 @@ class User {
   String firsname;
   String lastname;
   String gender;
+  String add;
 
-  User({this.id, this.firsname, this.lastname, this.gender});
+  User({this.id, this.firsname, this.lastname, this.gender, this.add});
 
   static List<User> getUserData() {
     return <User>[
-      User(id: 1, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 2, firsname: "Robin", lastname: "Kamboj", gender: "M"),
-      User(id: 3, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 5, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 6, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 7, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
-      User(id: 4, firsname: "Rinku", lastname: "Dhiman", gender: "M"),
+      User(
+          id: 1,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 2,
+          firsname: "Robin",
+          lastname: "Kamboj",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 3,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 5,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 6,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 7,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
+      User(
+          id: 4,
+          firsname: "Rinku",
+          lastname: "Dhiman",
+          gender: "M",
+          add: "New"),
     ];
   }
 }

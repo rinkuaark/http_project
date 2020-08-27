@@ -7,9 +7,7 @@ import 'package:http_project/model/outputObj.dart';
 import 'dart:io';
 import 'package:http_project/ui/chart.dart';
 import 'package:http_project/ui/table.dart';
-
-import 'ui/chart.dart';
-import 'ui/chart.dart';
+import 'package:http_project/ui/test.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      routes: {
+        'homeScreen': (context) => AppResponse(),
+        'chartScreen': (context) => ChartApp(),
+        'tableScreen': (context) => TableApp(),
+      },
       debugShowCheckedModeBanner: false,
+      //home: Test(),
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.blue[400],
@@ -77,21 +81,19 @@ class _AppResponseState extends State<AppResponse> {
         Column(
           children: [
             Row(
-              
               children: [
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: (Platform.isIOS)
                           ? CupertinoButton(
-                              padding: EdgeInsets.symmetric(horizontal: 0,vertical: 16.0),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 16.0),
                               color: Colors.blue[500],
                               borderRadius:
                                   BorderRadius.all(Radius.circular(18.0)),
                               child: Text("Chart Page"),
-                              onPressed: () {
-                                navigateToOtherScreen(context,ChartApp());
-                              },
+                              onPressed: () {},
                             )
                           : Container(
                               decoration: BoxDecoration(boxShadow: [
@@ -104,9 +106,11 @@ class _AppResponseState extends State<AppResponse> {
                               child: RaisedButton(
                                   splashColor: Colors.orange,
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 45, vertical: 15),
+                                      horizontal: 0, vertical: 15),
                                   color: Colors.orange,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'chartScreen');
+                                  },
                                   child: Text(
                                     "Chart Page",
                                     style: TextStyle(
@@ -114,12 +118,12 @@ class _AppResponseState extends State<AppResponse> {
                                   )))),
                 ),
                 Expanded(
-                  
                   child: Container(
-                    padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: (Platform.isIOS)
                           ? CupertinoButton(
-                              padding: EdgeInsets.symmetric(horizontal: 0,vertical: 16.0),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 16.0),
                               color: Colors.blue[500],
                               borderRadius:
                                   BorderRadius.all(Radius.circular(18.0)),
@@ -137,9 +141,11 @@ class _AppResponseState extends State<AppResponse> {
                               child: RaisedButton(
                                   splashColor: Colors.orange,
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 45, vertical: 15),
+                                      horizontal: 0, vertical: 15),
                                   color: Colors.orange,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'tableScreen');
+                                  },
                                   child: Text(
                                     "Table Page",
                                     style: TextStyle(
@@ -275,9 +281,4 @@ class _AppResponseState extends State<AppResponse> {
       ],
     );
   }
-
-  Future navigateToOtherScreen(context,route) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => route,));
-  }
-
 }
